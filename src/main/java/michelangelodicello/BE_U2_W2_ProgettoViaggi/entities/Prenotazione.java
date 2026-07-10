@@ -1,10 +1,7 @@
 package michelangelodicello.BE_U2_W2_ProgettoViaggi.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -13,6 +10,7 @@ import java.time.LocalDate;
 @Setter
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 public class Prenotazione {
 
@@ -29,7 +27,7 @@ public class Prenotazione {
     @ManyToOne
     @JoinColumn(name = "dipendente_id", nullable = false)
     private Dipendente dipendente;
-    
+
     @ManyToOne
     @JoinColumn(name = "viaggio_id", nullable = false)
     private Viaggio viaggio;

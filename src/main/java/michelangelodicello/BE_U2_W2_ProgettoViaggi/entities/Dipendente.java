@@ -1,16 +1,14 @@
 package michelangelodicello.BE_U2_W2_ProgettoViaggi.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Entity
 @Table(name = "dipendenti")
 @Setter
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 public class Dipendente {
 
