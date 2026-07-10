@@ -1,6 +1,7 @@
 package michelangelodicello.BE_U2_W2_ProgettoViaggi.service;
 
 import michelangelodicello.BE_U2_W2_ProgettoViaggi.entities.Viaggio;
+import michelangelodicello.BE_U2_W2_ProgettoViaggi.payload.ViaggioPayload;
 import michelangelodicello.BE_U2_W2_ProgettoViaggi.repositories.ViaggioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,17 +21,22 @@ public class ViaggioService {
         return repository.findById(id).orElseThrow(() -> new RuntimeException("Viaggio non trovato"));
     }
 
-    public Viaggio save(Viaggio v) {
+    public Viaggio save(ViaggioPayload payload) {
+        Viaggio v = new Viaggio();
+        v.setDestinazione(payload.getDestinazione());
+        v.setData(payload.getData());
+        v.setStato(payload.getStato());
         return repository.save(v);
     }
 
     public void delete(Long id) {
         repository.deleteById(id);
     }
-    
+
     public Viaggio cambiaStato(Long id, String nuovoStato) {
         Viaggio viaggio = getById(id);
         viaggio.setStato(nuovoStato.toUpperCase());
         return repository.save(viaggio);
+
     }
 }

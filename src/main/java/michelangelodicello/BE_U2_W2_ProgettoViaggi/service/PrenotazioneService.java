@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class PrenotazioneService {
@@ -19,6 +20,10 @@ public class PrenotazioneService {
     private DipendenteRepository dipendenteRepository;
     @Autowired
     private ViaggioRepository viaggioRepository;
+
+    public List<Prenotazione> getAll() {
+        return prenotazioneRepository.findAll();
+    }
 
     public Prenotazione assegnaDipendenteAViaggio(Long dipendenteId, Long viaggioId, String note) {
         Dipendente dipendente = dipendenteRepository.findById(dipendenteId)
@@ -35,4 +40,5 @@ public class PrenotazioneService {
         p.setNotePreferenze(note);
         return prenotazioneRepository.save(p);
     }
+
 }
